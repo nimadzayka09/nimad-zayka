@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+}
+
+code {
+    font-family:
+        source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+@layer base {
+    :root {
+        /* Nimad Zayka — Earthy + Jewel palette */
+        --background: 40 33% 96%; /* parchment */
+        --foreground: 20 28% 18%; /* deep earth ink */
+        --card: 0 0% 100%;
+        --card-foreground: 20 28% 18%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 20 28% 18%;
+        --primary: 350 70% 36%; /* chilli red */
+        --primary-foreground: 40 33% 96%;
+        --secondary: 40 85% 52%; /* turmeric */
+        --secondary-foreground: 15 12% 6%;
+        --muted: 40 25% 90%;
+        --muted-foreground: 20 15% 35%;
+        --accent: 101 37% 27%; /* leaf green */
+        --accent-foreground: 40 33% 96%;
+        --destructive: 0 84% 48%;
+        --destructive-foreground: 40 33% 96%;
+        --border: 20 20% 85%;
+        --input: 20 20% 85%;
+        --ring: 350 70% 36%;
+        --radius: 0.125rem;
+    }
+    .dark {
+        --background: 15 12% 6%;
+        --foreground: 40 33% 96%;
+        --card: 15 12% 9%;
+        --card-foreground: 40 33% 96%;
+        --popover: 15 12% 9%;
+        --popover-foreground: 40 33% 96%;
+        --primary: 350 70% 46%;
+        --primary-foreground: 40 33% 96%;
+        --secondary: 40 85% 52%;
+        --secondary-foreground: 15 12% 6%;
+        --muted: 15 12% 14%;
+        --muted-foreground: 40 20% 70%;
+        --accent: 101 37% 32%;
+        --accent-foreground: 40 33% 96%;
+        --destructive: 0 84% 40%;
+        --destructive-foreground: 40 33% 96%;
+        --border: 15 12% 16%;
+        --input: 15 12% 16%;
+        --ring: 350 70% 46%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    html,
+    body {
+        @apply bg-background text-foreground;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Fraunces", "Tiro Devanagari Hindi", serif;
+        letter-spacing: -0.015em;
+    }
+    [lang="hi"],
+    .font-hindi {
+        font-family: "Tiro Devanagari Hindi", "Fraunces", serif;
+        letter-spacing: -0.005em;
+    }
+    ::selection {
+        background-color: #eca81d;
+        color: #120f0e;
+    }
+}
+
+/* Pithora / Warli decorative patterns */
+.pithora-divider {
+    height: 28px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='28' viewBox='0 0 120 28'><g fill='none' stroke='%239B1B30' stroke-width='1.2'><path d='M0 14h120'/><circle cx='10' cy='14' r='3' fill='%239B1B30'/><circle cx='60' cy='14' r='3' fill='%23ECA81D' stroke='%23ECA81D'/><circle cx='110' cy='14' r='3' fill='%239B1B30'/><path d='M22 14l6-8 6 8-6 8zM46 14l6-8 6 8-6 8zM70 14l6-8 6 8-6 8zM94 14l6-8 6 8-6 8z'/></g></svg>");
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+.pithora-divider-light {
+    height: 28px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='28' viewBox='0 0 120 28'><g fill='none' stroke='%23ECA81D' stroke-width='1.2'><path d='M0 14h120'/><circle cx='10' cy='14' r='3' fill='%23ECA81D'/><circle cx='60' cy='14' r='3' fill='%23F9F6F0' stroke='%23F9F6F0'/><circle cx='110' cy='14' r='3' fill='%23ECA81D'/><path d='M22 14l6-8 6 8-6 8zM46 14l6-8 6 8-6 8zM70 14l6-8 6 8-6 8zM94 14l6-8 6 8-6 8z'/></g></svg>");
+    background-repeat: repeat-x;
+    background-position: center;
+    opacity: 0.9;
+}
+
+.grain-texture {
+    position: relative;
+}
+.grain-texture::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.36 0 0 0 0 0.25 0 0 0 0 0.2 0 0 0 0.12 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: 0.35;
+    mix-blend-mode: overlay;
+}
+
+.bg-parchment {
+    background-color: #f9f6f0;
+    background-image: radial-gradient(
+            ellipse at top left,
+            rgba(236, 168, 29, 0.08),
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at bottom right,
+            rgba(155, 27, 48, 0.06),
+            transparent 60%
+        );
+}
+
+.bg-hero-dark {
+    background: radial-gradient(
+            ellipse at 20% 20%,
+            rgba(155, 27, 48, 0.45),
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse at 85% 80%,
+            rgba(236, 168, 29, 0.2),
+            transparent 55%
+        ),
+        #120f0e;
+}
+
+.btn-primary-brand {
+    @apply inline-flex items-center justify-center gap-2 bg-brand-chilli text-brand-parchment hover:bg-brand-maroon transition-colors duration-300 font-medium px-7 py-3 rounded-sm;
+}
+.btn-secondary-brand {
+    @apply inline-flex items-center justify-center gap-2 bg-brand-turmeric text-brand-black hover:bg-yellow-500 transition-colors duration-300 font-medium px-7 py-3 rounded-sm;
+}
+.btn-outline-brand {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-brand-chilli text-brand-chilli hover:bg-brand-chilli hover:text-brand-parchment transition-colors duration-300 font-medium px-7 py-3 rounded-sm;
+}
+.btn-outline-cream {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-brand-parchment/70 text-brand-parchment hover:bg-brand-parchment hover:text-brand-black transition-colors duration-300 font-medium px-7 py-3 rounded-sm;
+}
+
+.kicker {
+    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.28em] font-semibold;
+}
+
+.logo-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #120f0e;
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}

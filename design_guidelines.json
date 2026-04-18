@@ -1,0 +1,145 @@
+{
+  "theme_archetype": {
+    "archetype": "1 (Organic & Earthy) blended with 5 (Jewel & Luxury) for contrast",
+    "theme": "hybrid (Light earthy content sections with Dark premium structural elements like Header/Footer/Hero)",
+    "description": "A premium, 'Farm-to-Kitchen' brand identity blending the traditional village tribal motifs (Nimadi Pithora art) with a clean, modern corporate aesthetic. Earthy base with deep red/maroon contrast."
+  },
+  "typography": {
+    "font_pairings": {
+      "headings": {
+        "family": "Fraunces, serif",
+        "weights": ["400", "500", "600", "700"],
+        "usage": "Hero typography, section titles, product titles. Use tighter letter-spacing."
+      },
+      "body": {
+        "family": "Manrope, sans-serif",
+        "weights": ["400", "500", "600"],
+        "usage": "Paragraphs, UI elements, labels, small text. Use geometric readability."
+      }
+    },
+    "scale": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-none",
+      "h2": "text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight",
+      "h3": "text-2xl sm:text-3xl tracking-tight",
+      "h4": "text-xl sm:text-2xl font-medium",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm tracking-wide uppercase"
+    }
+  },
+  "color_palette": {
+    "primitive": {
+      "chilli_red": {"hex": "#9B1B30", "hsl": "350, 70%, 36%"},
+      "deep_maroon": {"hex": "#4A0E17", "hsl": "351, 68%, 17%"},
+      "turmeric_yellow": {"hex": "#ECA81D", "hsl": "40, 85%, 52%"},
+      "leaf_green": {"hex": "#3B5E2B", "hsl": "101, 37%, 27%"},
+      "parchment": {"hex": "#F9F6F0", "hsl": "40, 33%, 96%"},
+      "earthy_brown": {"hex": "#5C4033", "hsl": "20, 28%, 28%"},
+      "rich_black": {"hex": "#120F0E", "hsl": "15, 12%, 6%"}
+    },
+    "semantic": {
+      "background": {
+        "default": "hsl(40, 33%, 96%)",
+        "dark": "hsl(15, 12%, 6%)"
+      },
+      "foreground": {
+        "default": "hsl(20, 28%, 28%)",
+        "dark": "hsl(40, 33%, 96%)"
+      },
+      "primary": {
+        "default": "hsl(350, 70%, 36%)",
+        "foreground": "hsl(40, 33%, 96%)"
+      },
+      "secondary": {
+        "default": "hsl(40, 85%, 52%)",
+        "foreground": "hsl(15, 12%, 6%)"
+      },
+      "accent": {
+        "default": "hsl(101, 37%, 27%)",
+        "foreground": "hsl(40, 33%, 96%)"
+      }
+    }
+  },
+  "layout_and_spacing": {
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "spacing_philosophy": "Generous spacing. Use p-8, p-12, p-20 for sections to give breathing room. Borders with padding inside.",
+    "borders": "Use subtle 1px borders colored with earthy_brown/10 for structural elements, and Pithora-inspired SVG decorative borders for section transitions.",
+    "radius": "rounded-none or rounded-sm to maintain a premium corporate feel. Avoid heavy rounded corners."
+  },
+  "components_and_interactions": {
+    "buttons": {
+      "primary": "bg-chilli_red text-parchment hover:bg-deep_maroon transition-colors duration-300 font-medium px-8 py-3 rounded-none",
+      "secondary": "bg-turmeric_yellow text-rich_black hover:bg-yellow-500 transition-colors duration-300 font-medium px-8 py-3 rounded-none",
+      "outline": "border-2 border-chilli_red text-chilli_red hover:bg-chilli_red hover:text-parchment transition-colors duration-300 px-8 py-3 rounded-none"
+    },
+    "cards": {
+      "product": "bg-white border border-earthy_brown/10 hover:shadow-xl transition-shadow duration-300 p-0 overflow-hidden",
+      "partnership": "bg-parchment border border-chilli_red/20 p-8 hover:-translate-y-1 hover:border-chilli_red transition-all duration-300 group"
+    },
+    "navigation": {
+      "header": "Sticky header. Dark theme (bg-rich_black) to beautifully support the provided logo. Text in parchment. Floating with subtle border-b border-white/10.",
+      "footer": "Dark theme (bg-rich_black) with deep_maroon subtle gradients. Huge footer layout with logo and Pithora art footer border."
+    },
+    "motion": {
+      "page_load": "Framer motion staggered fade-ins for typography.",
+      "hover": "Subtle scale up for images (group-hover:scale-105).",
+      "scroll": "Parallax effect on the Journey Illustration."
+    },
+    "icons": {
+      "library": "lucide-react for standard UI, supplemented with custom SVG paths for village/tribal motifs (mountain triangles, dot patterns)."
+    }
+  },
+  "assets_and_media": {
+    "brand_logo": "https://customer-assets.emergentagent.com/job_2311a9ad-e206-4c20-a1b4-b68b98e740de/artifacts/iurhigtn_NIMAD%20ZAYKA%20PNG.png",
+    "journey_illustration": "https://customer-assets.emergentagent.com/job_2311a9ad-e206-4c20-a1b4-b68b98e740de/artifacts/1lqxwjkh_Untitled%20design.png",
+    "textures": {
+      "parchment_bg": "https://static.prod-images.emergentagent.com/jobs/2311a9ad-e206-4c20-a1b4-b68b98e740de/images/e9aef0a292f6db449c8834d5462718ad4aeadf24e1318b1c53afbbdfc30d68c9.png",
+      "dark_maroon_gold": "https://static.prod-images.emergentagent.com/jobs/2311a9ad-e206-4c20-a1b4-b68b98e740de/images/3675d606b2ba72b66691ab0c4449030d5955b29ada20d497bbc70cde83141bac.png"
+    },
+    "photography": {
+      "spice_flatlay": "https://static.prod-images.emergentagent.com/jobs/2311a9ad-e206-4c20-a1b4-b68b98e740de/images/4dca1e8270f76c3cde16e2862b77e3c187f3cba1147fe60bb3be39df90578b76.png",
+      "pithora_border": "https://static.prod-images.emergentagent.com/jobs/2311a9ad-e206-4c20-a1b4-b68b98e740de/images/6e5554906abc32cedc1dd6b30f00e7220079dbcf99ea21b678beb12925858aa8.png",
+      "turmeric": "https://images.unsplash.com/photo-1768729340925-2749ecdc211c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwxfHx0dXJtZXJpYyUyMGFuZCUyMHJlZCUyMGNoaWxsaSUyMHBvd2RlcnxlbnwwfHx8fDE3NzY0MTUxMjR8MA&ixlib=rb-4.1.0&q=85",
+      "agriculture": "https://images.unsplash.com/photo-1673778797664-e0d41a3d974a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzV8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBhZ3JpY3VsdHVyZSUyMGZhcm0lMjB2aWxsYWdlfGVufDB8fHx8MTc3NjQxNTEyNHww&ixlib=rb-4.1.0&q=85"
+    }
+  },
+  "pages_blueprint": {
+    "global": {
+      "navbar": "Dark background to support logo. Nav links in white/parchment. Inquiry cart icon with item count badge.",
+      "footer": "Dark maroon background. Multi-column: Quick Links, Contact Info, Socials. Pithora border separating footer from main content.",
+      "whatsapp_floating": "Fixed bottom-right button for WhatsApp (+916265996333), using turmeric_yellow or whatsapp green."
+    },
+    "home": {
+      "hero": "Split layout or bento grid. Headline: 'The Soul of Nimad, The Spirit of Purity.' Dark maroon background with 'spice_flatlay' image. Call to Action: 'Explore Products'.",
+      "story_section": "Light parchment background. Displays the provided 'journey_illustration' prominently. Text detailing the 5-step journey.",
+      "featured_products": "Grid showcasing top categories: Standard Pouch vs Premium Box."
+    },
+    "about": {
+      "legacy": "Highlight founder Mukesh Kushwah. Timeline or narrative from 'Mukesh & Sons Masala Udhyog' to 'Pvt Ltd'.",
+      "visuals": "Use the 'agriculture' stock photo. Pithora motifs styling."
+    },
+    "product_catalog": {
+      "layout": "Filter sidebar (Standard vs Premium). Grid of product cards.",
+      "product_card": "Image, Title (Turmeric, Chilli, Meat Masala, etc.), Variants (20g, 50g, 100g), 'Inquire / Add to Cart' button.",
+      "cart_behavior": "Adds to inquiry context state, opens slide-out cart panel. No real payments, just a 'Submit Inquiry' form at checkout."
+    },
+    "csr": {
+      "content": "Focus on Nimad farmers, tribal communities, eco-friendly Rajpur plant. Earthy, photo-heavy layout."
+    },
+    "join_us": {
+      "layout": "4 large bento-style cards: Suppliers, Careers, Distributors, Influencers.",
+      "interaction": "Clicking a card opens a Shadcn Dialog containing a role-specific inquiry form."
+    },
+    "contact": {
+      "layout": "Split section: Rajpur factory address vs Indore Scheme 51 marketing office. Form with 'info@nimadzayka.com'."
+    }
+  },
+  "instructions_to_main_agent": [
+    "Use Tailwind CSS for styling and Shadcn/UI primitives for complex components (Dialog for inquiries, Sheet for the inquiry cart).",
+    "Initialize standard React app with `.js` files (NO `.tsx`).",
+    "All interactive elements (buttons, inputs, dialog triggers, cart actions) MUST include `data-testid` attributes (e.g., `data-testid='add-to-cart-btn'`, `data-testid='inquiry-submit'`).",
+    "Typography: Use `Fraunces` (Headings) and `Manrope` (Body) from Google Fonts.",
+    "For the custom Pithora/Warli borders, use CSS background-image repeating with the `pithora_border` asset, or create abstract inline SVG patterns (triangles, dots) using the `chilli_red` or `turmeric_yellow` colors.",
+    "The inquiry cart should be a React context that holds items and weight variants, ending in a contact form submission instead of Stripe/payment gateway.",
+    "Logo handling: Because the logo has a black background, it is strictly recommended to keep the Navbar and Footer background `rich_black` (#120F0E) or `deep_maroon`. If the logo must be placed on a light section, render it inside a dark card wrapper."
+  ]
+}

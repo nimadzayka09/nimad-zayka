@@ -23,13 +23,13 @@ export const Navbar = () => {
             className="sticky top-0 z-40 bg-brand-black/95 backdrop-blur border-b border-white/10"
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="h-20 flex items-center justify-between gap-4">
+                <div className="h-28 flex items-center justify-between gap-4">
                     <Link
                         to="/"
                         data-testid="nav-home-logo"
                         className="flex items-center gap-3"
                     >
-                        <Logo className="h-12 w-auto" />
+                        <Logo className="h-20 w-auto" />
                         <div className="hidden sm:flex flex-col leading-tight">
                             <span className="text-brand-parchment font-serif text-lg">
                                 Nimad Zayka

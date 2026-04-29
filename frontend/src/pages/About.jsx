@@ -15,7 +15,7 @@ const About = () => {
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
                     <p className="kicker text-brand-turmeric">Heritage & Vision</p>
                     <h1 className="mt-4 font-serif text-5xl sm:text-6xl lg:text-7xl leading-[1.02]">
-                        From a Rajpur Stone Mill to a
+                        From a Nimad Stone Mill to a
                         <br />
                         <span className="italic text-brand-turmeric">
                             Modern Pvt. Ltd. Powerhouse.
@@ -84,7 +84,7 @@ const About = () => {
                             {[
                                 ["1990", "Established"],
                                 ["451447", "Nimad Roots"],
-                                ["Pvt. Ltd.", "Today"],
+                                ["Nikesh & Surbhi kushwah", "Legacy Support"],
                             ].map(([n, l]) => (
                                 <div
                                     key={l}

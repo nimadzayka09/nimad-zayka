@@ -170,13 +170,13 @@ const CSR = () => {
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                         <img
-                            src="https://images.unsplash.com/photo-1589556264800-08ae9e129a8c?auto=format&fit=crop&w=800&q=80"
+                            src="https://i.ibb.co/RTdWMZHh/womens.png"
                             alt="Nimadi women at work"
                             className="aspect-[4/5] object-cover border border-brand-earth/20"
                         />
                         <img
-                            src="https://images.unsplash.com/photo-1504474601136-51ef70f4f84f?auto=format&fit=crop&w=800&q=80"
-                            alt="Nimadi village life"
+                            src="https://i.ibb.co/zHF9nGSx/TN5-Dhar090425084132.jpg"
+                            alt="NIMAD KI MAHILAON ko Atmanirbhar banane mein PMFME yojana ki major bhoomika hai"
                             className="aspect-[4/5] object-cover border border-brand-earth/20 mt-10"
                         />
                     </div>

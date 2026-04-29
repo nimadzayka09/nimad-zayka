@@ -43,7 +43,7 @@ const CSR = () => {
                     className="absolute inset-0 opacity-20 bg-cover bg-center"
                     style={{
                         backgroundImage:
-                            "url('https://images.unsplash.com/photo-1536657464919-892534f60d6e?auto=format&fit=crop&w=1920&q=80')",
+                            "url('https://i.ibb.co/PG1FB3mS/955c4a32-f37d-4aff-8914-508a94baa412.jpg')",
                     }}
                 />
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">

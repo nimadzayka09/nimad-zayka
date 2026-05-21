@@ -8,7 +8,7 @@ export const BRAND = {
     phone: "+91 62659 96333",
     phoneRaw: "+916265996333",
     whatsapp: "916265996333",
-    logo: "https://customer-assets.emergentagent.com/job_2311a9ad-e206-4c20-a1b4-b68b98e740de/artifacts/iurhigtn_NIMAD%20ZAYKA%20PNG.png",
+    logo: "https://i.ibb.co/Y4byrqxw/Untitled-design.png",
     journey: "https://customer-assets.emergentagent.com/job_2311a9ad-e206-4c20-a1b4-b68b98e740de/artifacts/1lqxwjkh_Untitled%20design.png",
     founderPhoto:
         "https://customer-assets.emergentagent.com/job_spice-heritage-68/artifacts/8c3b81kp_1C1187C0-6.jpeg",

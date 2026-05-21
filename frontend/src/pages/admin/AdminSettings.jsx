@@ -12,7 +12,7 @@ export default function AdminSettings() {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    const loadSettings = async () => {
+    async function loadSettings() {
       try {
         const response = await api.get("/settings");
 
@@ -21,10 +21,10 @@ export default function AdminSettings() {
           ...response.data,
         });
       } catch (error) {
-        console.error("Failed to load settings:", error);
+        console.error(error);
         toast.error("Failed to load settings");
       }
-    };
+    }
 
     loadSettings();
   }, []);
@@ -38,24 +38,26 @@ export default function AdminSettings() {
     );
   }
 
-  const update = (k, v) =>
-    setForm((f) => ({
-      ...f,
-      [k]: v,
+  const update = (key, value) => {
+    setForm((prev) => ({
+      ...prev,
+      [key]: value,
     }));
+  };
 
-  const updateSlide = (idx, k, v) =>
-    setForm((f) => ({
-      ...f,
-      hero_slides: (f.hero_slides || []).map((s, i) =>
-        i === idx
+  const updateSlide = (index, key, value) => {
+    setForm((prev) => ({
+      ...prev,
+      hero_slides: (prev.hero_slides || []).map((slide, i) =>
+        i === index
           ? {
-              ...s,
-              [k]: v,
+              ...slide,
+              [key]: value,
             }
-          : s
+          : slide
       ),
     }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,11 +70,12 @@ export default function AdminSettings() {
       await refresh();
 
       toast.success("Settings saved successfully");
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
 
       toast.error(
-        err.response?.data?.detail || "Save failed"
+        error?.response?.data?.detail ||
+          "Save failed"
       );
     } finally {
       setSubmitting(false);
@@ -82,7 +85,7 @@ export default function AdminSettings() {
   return (
     <div data-testid="admin-settings-page">
       <p className="kicker text-brand-chilli">
-        Site settings
+        Site Settings
       </p>
 
       <h1 className="mt-2 font-serif text-4xl text-brand-black">
@@ -97,9 +100,10 @@ export default function AdminSettings() {
 
       <form
         onSubmit={handleSubmit}
-        data-testid="admin-settings-form"
         className="mt-10 space-y-10"
       >
+        {/* CONTACT */}
+
         <section className="bg-white border border-brand-earth/15 p-6">
           <h2 className="font-serif text-2xl text-brand-black">
             Contact
@@ -108,7 +112,7 @@ export default function AdminSettings() {
           <div className="mt-5 grid sm:grid-cols-2 gap-4">
             <div>
               <label className="text-xs uppercase tracking-widest text-brand-earth/70">
-                Display phone
+                Display Phone
               </label>
 
               <input
@@ -134,8 +138,196 @@ export default function AdminSettings() {
                 className="mt-2 w-full border border-brand-earth/25 bg-brand-parchment px-3 py-2 text-sm"
               />
             </div>
+
+            <div>
+              <label className="text-xs uppercase tracking-widest text-brand-earth/70">
+                WhatsApp
+              </label>
+
+              <input
+                value={form.whatsapp || ""}
+                onChange={(e) =>
+                  update("whatsapp", e.target.value)
+                }
+                className="mt-2 w-full border border-brand-earth/25 bg-brand-parchment px-3 py-2 text-sm"
+              />
+            </div>
           </div>
         </section>
+
+        {/* HERO SLIDES */}
+
+        <section className="bg-white border border-brand-earth/15 p-6">
+          <h2 className="font-serif text-2xl text-brand-black">
+            Hero Slides
+          </h2>
+
+          <div className="mt-6 space-y-6">
+            {(form.hero_slides || []).map(
+              (slide, index) => (
+                <div
+                  key={index}
+                  className="border border-brand-earth/15 p-5"
+                >
+                  <p className="mb-4 text-brand-chilli">
+                    Slide {index + 1}
+                  </p>
+
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="sm:col-span-2">
+                      <label className="text-xs uppercase tracking-widest text-brand-earth/70">
+                        Title
+                      </label>
+
+                      <input
+                        value={slide.title || ""}
+                        onChange={(e) =>
+                          updateSlide(
+                            index,
+                            "title",
+                            e.target.value
+                          )
+                        }
+                        className="mt-2 w-full border border-brand-earth/25 bg-white px-3 py-2"
+                      />
+                    </div>
+
+                    <div className="sm:col-span-2">
+                      <label className="text-xs uppercase tracking-widest text-brand-earth/70">
+                        Subtitle
+                      </label>
+
+                      <input
+                        value={slide.subtitle || ""}
+                        onChange={(e) =>
+                          updateSlide(
+                            index,
+                            "subtitle",
+                            e.target.value
+                          )
+                        }
+                        className="mt-2 w-full border border-brand-earth/25 bg-white px-3 py-2"
+                      />
+                    </div>
+
+                    <div className="sm:col-span-2">
+                      <label className="text-xs uppercase tracking-widest text-brand-earth/70">
+                        Image URL
+                      </label>
+
+                      <input
+                        value={slide.image || ""}
+                        onChange={(e) =>
+                          updateSlide(
+                            index,
+                            "image",
+                            e.target.value
+                          )
+                        }
+                        className="mt-2 w-full border border-brand-earth/25 bg-white px-3 py-2"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )
+            )}
+          </div>
+        </section>
+
+        {/* ABOUT PAGE */}
+
+        <section className="bg-white border border-brand-earth/15 p-6">
+          <h2 className="font-serif text-2xl text-brand-black">
+            About Page
+          </h2>
+
+          <div className="mt-5 space-y-4">
+            <div>
+              <label className="text-xs uppercase tracking-widest text-brand-earth/70">
+                Banner Title
+              </label>
+
+              <input
+                value={
+                  form.about_banner_title || ""
+                }
+                onChange={(e) =>
+                  update(
+                    "about_banner_title",
+                    e.target.value
+                  )
+                }
+                className="mt-2 w-full border border-brand-earth/25 bg-brand-parchment px-3 py-2"
+              />
+            </div>
+
+            <div>
+              <label className="text-xs uppercase tracking-widest text-brand-earth/70">
+                Story Text
+              </label>
+
+              <textarea
+                rows={5}
+                value={
+                  form.about_story_text || ""
+                }
+                onChange={(e) =>
+                  update(
+                    "about_story_text",
+                    e.target.value
+                  )
+                }
+                className="mt-2 w-full border border-brand-earth/25 bg-brand-parchment px-3 py-2"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* CSR PAGE */}
+
+        <section className="bg-white border border-brand-earth/15 p-6">
+          <h2 className="font-serif text-2xl text-brand-black">
+            CSR Page
+          </h2>
+
+          <div className="mt-5">
+            <textarea
+              rows={5}
+              value={form.csr_intro || ""}
+              onChange={(e) =>
+                update(
+                  "csr_intro",
+                  e.target.value
+                )
+              }
+              className="w-full border border-brand-earth/25 bg-brand-parchment px-3 py-2"
+            />
+          </div>
+        </section>
+
+        {/* JOIN US */}
+
+        <section className="bg-white border border-brand-earth/15 p-6">
+          <h2 className="font-serif text-2xl text-brand-black">
+            Join Us Page
+          </h2>
+
+          <div className="mt-5">
+            <textarea
+              rows={5}
+              value={form.joinus_intro || ""}
+              onChange={(e) =>
+                update(
+                  "joinus_intro",
+                  e.target.value
+                )
+              }
+              className="w-full border border-brand-earth/25 bg-brand-parchment px-3 py-2"
+            />
+          </div>
+        </section>
+
+        {/* SAVE */}
 
         <div className="sticky bottom-0 bg-brand-parchment/95 backdrop-blur py-4 border-t border-brand-earth/15 flex justify-end">
           <button
@@ -149,9 +341,7 @@ export default function AdminSettings() {
                 Saving...
               </>
             ) : (
-              <>
-                Save settings
-              </>
+              <>Save settings</>
             )}
           </button>
         </div>

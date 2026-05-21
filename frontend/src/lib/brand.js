@@ -31,7 +31,7 @@ export const BRAND = {
         },
     },
     social: {
-        instagram: "https://instagram.com",
+        instagram: "https://www.instagram.com/nimadzayka.in?igsh=amN1amV5MGJ1Nml4&utm_source=qr",
         facebook: "https://facebook.com",
         youtube: "https://youtube.com",
     },

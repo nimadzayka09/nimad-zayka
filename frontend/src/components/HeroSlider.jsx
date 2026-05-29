@@ -47,9 +47,7 @@ export const HeroSlider = () => {
                             }`}
                             style={{ backgroundImage: `url(${s.image})` }}
                         />
-                        {/* lighter overlay — image stays visible */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/55 to-brand-black/20" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-brand-black/80 via-brand-black/30 to-transparent" />
+                       
                     </div>
                 ))}
 

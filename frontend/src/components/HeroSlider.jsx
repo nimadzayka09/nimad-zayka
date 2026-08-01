@@ -31,32 +31,56 @@ export const HeroSlider = () => {
             className="relative overflow-hidden bg-brand-black text-brand-parchment"
         >
             <div className="relative h-[82vh] min-h-[560px] max-h-[820px]">
-                {/* SLIDE IMAGES */}
-                {slides.map((s, i) => (
-                    <div
-                        key={s.key}
-                        data-testid={`hero-slide-${i}`}
-                        aria-hidden={i !== idx}
-                        className={`absolute inset-0 transition-opacity duration-[1100ms] ease-out ${
-                            i === idx ? "opacity-100" : "opacity-0"
-                        }`}
-                    >
-                        <div
-                            className={`absolute inset-0 bg-cover bg-center ${
-                                i === idx ? "animate-slow-zoom" : ""
-                            }`}
-                            style={{ backgroundImage: `url(${s.image})` }}
-                        />
-                       
-                    </div>
-                ))}
 
-                {/* TEXT OVERLAY — minimal */}
+                {/* SLIDES */}
+                {slides.map((s, i) => {
+                    const isVideo =
+                        s.image &&
+                        (s.image.toLowerCase().includes(".mp4") ||
+                            s.image.toLowerCase().includes(".webm") ||
+                            s.image.toLowerCase().includes(".ogg"));
+
+                    return (
+                        <div
+                            key={s.key}
+                            data-testid={`hero-slide-${i}`}
+                            aria-hidden={i !== idx}
+                            className={`absolute inset-0 transition-opacity duration-[1100ms] ease-out ${
+                                i === idx ? "opacity-100" : "opacity-0"
+                            }`}
+                        >
+                            {isVideo ? (
+                                <video
+                                    className="absolute inset-0 w-full h-full object-cover"
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                >
+                                    <source src={s.image} type="video/mp4" />
+                                </video>
+                            ) : (
+                                <div
+                                    className={`absolute inset-0 bg-cover bg-center ${
+                                        i === idx ? "animate-slow-zoom" : ""
+                                    }`}
+                                    style={{
+                                        backgroundImage: `url(${s.image})`,
+                                    }}
+                                />
+                            )}
+
+                            <div className="absolute inset-0 bg-black/35" />
+                        </div>
+                    );
+                })}
+
+                {/* TEXT */}
                 <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-end lg:items-center pb-20 lg:pb-0">
                     <div className="max-w-2xl">
+
                         <p
                             key={`kicker-${idx}`}
-                            data-testid="hero-kicker"
                             className="kicker text-brand-turmeric animate-fade-up"
                         >
                             <i className="fa-solid fa-mortar-pestle" />
@@ -65,16 +89,13 @@ export const HeroSlider = () => {
 
                         <h1
                             key={`title-${idx}`}
-                            data-testid="hero-slide-title"
                             className="mt-5 font-serif text-4xl sm:text-5xl lg:text-7xl leading-[1.05] tracking-tight animate-fade-up"
-                            lang="hi"
                         >
                             {current.title}
                         </h1>
 
                         <p
                             key={`sub-${idx}`}
-                            data-testid="hero-slide-subtitle"
                             className="mt-4 text-brand-parchment/85 text-base lg:text-lg animate-fade-up"
                         >
                             {current.subtitle}
@@ -83,41 +104,36 @@ export const HeroSlider = () => {
                         <div className="mt-8">
                             <Link
                                 to={current.cta_to || "/"}
-                                data-testid="hero-primary-cta"
                                 className="btn-primary-brand"
                             >
                                 {current.cta_label}
                                 <i className="fa-solid fa-arrow-right text-xs" />
                             </Link>
                         </div>
+
                     </div>
                 </div>
 
-                {/* MAIN TAGLINE — subtle, bottom */}
+                {/* TAGLINE */}
                 <div className="absolute bottom-10 right-6 lg:right-12 z-10 hidden md:block max-w-xs text-right">
-                    <p
-                        data-testid="hero-main-tagline"
-                        className="font-serif italic text-brand-turmeric text-lg lg:text-xl leading-snug"
-                    >
+                    <p className="font-serif italic text-brand-turmeric text-lg lg:text-xl leading-snug">
                         Legacy of Purity · Powered by Women · Driven by Heritage
                     </p>
                 </div>
+
             </div>
 
-            {/* CONTROLS */}
+            {/* PREV / NEXT */}
             <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 z-20 flex items-center justify-between px-3 lg:px-6 pointer-events-none">
                 <button
-                    data-testid="hero-prev-btn"
                     onClick={() => go(idx - 1)}
-                    aria-label="Previous slide"
                     className="pointer-events-auto h-11 w-11 grid place-items-center bg-brand-black/50 hover:bg-brand-chilli border border-white/20 text-brand-parchment transition-colors"
                 >
                     <ChevronLeft />
                 </button>
+
                 <button
-                    data-testid="hero-next-btn"
                     onClick={() => go(idx + 1)}
-                    aria-label="Next slide"
                     className="pointer-events-auto h-11 w-11 grid place-items-center bg-brand-black/50 hover:bg-brand-chilli border border-white/20 text-brand-parchment transition-colors"
                 >
                     <ChevronRight />
@@ -129,9 +145,7 @@ export const HeroSlider = () => {
                 {slides.map((s, i) => (
                     <button
                         key={s.key}
-                        data-testid={`hero-dot-${i}`}
                         onClick={() => go(i)}
-                        aria-label={`Go to slide ${i + 1}`}
                         className={`h-1.5 rounded-full transition-all ${
                             i === idx
                                 ? "w-10 bg-brand-turmeric"

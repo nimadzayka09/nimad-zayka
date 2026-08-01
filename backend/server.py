@@ -1,5 +1,6 @@
 from fastapi import FastAPI, APIRouter, HTTPException, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -32,6 +33,10 @@ security = HTTPBearer(auto_error=False)
 
 app = FastAPI(title="Nimad Zayka API")
 api_router = APIRouter(prefix="/api")
+
+# ---------- Static files (product images) ----------
+# Files inside backend/static/ will be served at /static/<filename>
+app.mount("/static", StaticFiles(directory=str(ROOT_DIR / "static")), name="static")
 
 
 # ---------- Models ----------
@@ -149,6 +154,8 @@ class SiteSettingsUpdate(BaseModel):
 
 
 # ---------- Seed data ----------
+# NOTE: image paths below point to files inside backend/static/
+# Update the filenames here if your actual files in GitHub have different names/casing.
 SEED_PRODUCTS: List[dict] = [
     # Standard Pouch
     {
@@ -158,7 +165,7 @@ SEED_PRODUCTS: List[dict] = [
         "category": "standard_pouch",
         "short_description": "Sun-kissed Nimadi turmeric, stone-ground to a warm golden powder.",
         "long_description": "Our Haldi is sourced from select farms along the Narmada valley and sun-dried the traditional Nimadi way. Rich in curcumin, with an earthy aroma and a deep, warm color that brings life to every curry, dal and marinade.",
-        "image": "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?auto=format&fit=crop&w=1200&q=80",
+        "image": "/static/haldi pouch.PNG",
         "variants": [{"weight": "100g", "price": 55}, {"weight": "200g", "price": 99}, {"weight": "500g", "price": 229}],
         "tags": ["Pure", "Stone Ground", "Farm Fresh"],
         "is_featured": True,
@@ -170,7 +177,7 @@ SEED_PRODUCTS: List[dict] = [
         "category": "standard_pouch",
         "short_description": "Fiery Nimadi red chillies, slow-dried and ground to a vivid crimson powder.",
         "long_description": "Hand-picked and naturally sun-dried Nimadi chillies deliver a balanced heat with a gentle smokiness. Perfect for tadka, sabzi and marinades — a crimson pop of flavour from the heart of Madhya Pradesh.",
-        "image": "https://images.unsplash.com/photo-1583396618422-597b2755de1a?auto=format&fit=crop&w=1200&q=80",
+        "image": "/static/lal mirchi pouch.PNG",
         "variants": [{"weight": "100g", "price": 65}, {"weight": "200g", "price": 119}, {"weight": "500g", "price": 279}],
         "tags": ["Spicy", "Sun Dried", "Authentic"],
         "is_featured": True,
@@ -182,7 +189,7 @@ SEED_PRODUCTS: List[dict] = [
         "category": "standard_pouch",
         "short_description": "Aromatic coriander, roasted light and ground fine for a citrusy depth.",
         "long_description": "Light-roasted coriander seeds from Nimadi farms, ground fine to preserve their sweet, citrusy aroma. The everyday base note for dals, sabzis and gravies across Indian kitchens.",
-        "image": "https://images.unsplash.com/photo-1599909366516-6c3dd1a5c47c?auto=format&fit=crop&w=1200&q=80",
+        "image": "/static/dhaniya pouch.PNG",
         "variants": [{"weight": "100g", "price": 45}, {"weight": "200g", "price": 85}, {"weight": "500g", "price": 199}],
         "tags": ["Aromatic", "Fine Ground"],
         "is_featured": True,
@@ -194,7 +201,7 @@ SEED_PRODUCTS: List[dict] = [
         "category": "standard_pouch",
         "short_description": "A classic household blend — warm, balanced, ready for every curry.",
         "long_description": "A time-tested family recipe blending cardamom, cinnamon, clove, cumin, pepper and bay leaf. Warm and balanced, this everyday garam masala lifts any curry, pulao or subzi with Nimadi soul.",
-        "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=1200&q=80",
+        "image": "/static/garam masala box.PNG",
         "variants": [{"weight": "50g", "price": 69}, {"weight": "100g", "price": 129}],
         "tags": ["Blended", "Everyday"],
         "is_featured": True,
@@ -207,7 +214,7 @@ SEED_PRODUCTS: List[dict] = [
         "category": "premium_box",
         "short_description": "Robust, slow-blended masala crafted for mutton, chicken and keema.",
         "long_description": "A bold, slow-ground premium blend of 18 whole spices — built for rich mutton curries, chicken gravies and keema. Packaged in a keepsake box that preserves freshness and aroma.",
-        "image": "https://images.unsplash.com/photo-1625398407796-82650a8c135f?auto=format&fit=crop&w=1200&q=80",
+        "image": "/static/chicken masala.PNG",
         "variants": [{"weight": "20g", "price": 39}, {"weight": "50g", "price": 89}, {"weight": "100g", "price": 159}],
         "tags": ["Premium", "Gift Box", "Non-Veg"],
         "is_featured": True,
@@ -219,7 +226,7 @@ SEED_PRODUCTS: List[dict] = [
         "category": "premium_box",
         "short_description": "A limited-batch, hand-selected garam masala in a premium gift box.",
         "long_description": "Our flagship Garam Masala, blended in small batches from hand-selected whole spices. Deeper, warmer and more fragrant than the everyday variant — presented in a premium Nimadi-art box.",
-        "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=1200&q=80",
+        "image": "/static/garam masala box.PNG",
         "variants": [{"weight": "50g", "price": 99}, {"weight": "100g", "price": 179}],
         "tags": ["Premium", "Hand Blended"],
         "is_featured": False,
@@ -231,7 +238,7 @@ SEED_PRODUCTS: List[dict] = [
         "category": "premium_box",
         "short_description": "Royal, creamy, mildly sweet — for restaurant-style paneer at home.",
         "long_description": "A regal blend of cashew-forward spices, cardamom and saffron notes, crafted to deliver rich, creamy, restaurant-style Shahi Paneer. Packed in a premium box for gifting and long shelf life.",
-        "image": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=1200&q=80",
+        "image": "/static/shahi paneer masala.PNG",
         "variants": [{"weight": "50g", "price": 95}, {"weight": "100g", "price": 169}],
         "tags": ["Premium", "Vegetarian", "Rich"],
         "is_featured": True,
@@ -243,7 +250,7 @@ SEED_PRODUCTS: List[dict] = [
         "category": "premium_box",
         "short_description": "A Nimadi-style masala built for authentic Dal Bati & Baati Chokha.",
         "long_description": "A regional specialty from Nimad & Malwa — this masala brings the smoky, tangy, slow-simmered depth of traditional Dal Bati. A taste of home, bottled in a premium box.",
-        "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=1200&q=80",
+        "image": "/static/dal bati spices.jpeg",
         "variants": [{"weight": "50g", "price": 89}, {"weight": "100g", "price": 159}],
         "tags": ["Premium", "Regional", "Traditional"],
         "is_featured": True,
@@ -255,7 +262,7 @@ SEED_PRODUCTS: List[dict] = [
         "category": "premium_box",
         "short_description": "Whole-spice medley for tadka, pulao, and slow-cooked curries.",
         "long_description": "A curated mix of whole spices — green cardamom, clove, cinnamon, black cardamom, bay leaf, pepper — for tempering dals, biryanis and slow-cooked curries. Sealed fresh in a premium box.",
-        "image": "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=1200&q=80",
+        "image": "/static/khada masala 250 g jar.jpeg",
         "variants": [{"weight": "50g", "price": 109}, {"weight": "100g", "price": 199}],
         "tags": ["Premium", "Whole Spice"],
         "is_featured": False,

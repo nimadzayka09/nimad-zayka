@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 
-import { api } from "../lib/api";
+import { fetchSettings as fetchSettingsApi } from "../lib/api";
 import { HERO_SLIDES, BRAND } from "../lib/brand";
 
 const SettingsContext = createContext(null);
@@ -50,7 +50,7 @@ export function SettingsProvider({ children }) {
 
   const fetchSettings = useCallback(async () => {
     try {
-      const { data } = await api.get("/settings");
+      const data = await fetchSettingsApi();
 
       setSettings({
         phone: data.phone ?? DEFAULT_SETTINGS.phone,
